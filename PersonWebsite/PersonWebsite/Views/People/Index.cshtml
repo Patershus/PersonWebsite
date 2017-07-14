@@ -1,19 +1,25 @@
 ﻿@model PersonWebsite.Models.Person[]
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>All the people</title>
+    <link href="~/bootstrap.css" rel="stylesheet" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
 
-    <h1>People!</h1>
+    <h1>All the people!</h1>
 
-    <ul>
+    <table>
         @foreach (var person in @Model)
         {
-            <li>@person.Name  @person.Email </li>
+            <tr>
+                <td>@person.Name  @person.Email </td>
+                <td><a asp-controller="people" asp-action="edit" asp-route-id="@(person.Id)">Edit</a></td>
+            </tr> 
         }
-    </ul>
+    </table>
+
 </body>
 </html>

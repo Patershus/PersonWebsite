@@ -33,5 +33,11 @@ namespace PersonWebsite.Controllers
             DataManager.AddPerson(person);
             return Redirect(nameof (Index));
         }
+
+        public IActionResult Edit(int id)
+        {
+            var person = DataManager.GetAPerson(id);
+            return View(person);
+        }
     }
 }

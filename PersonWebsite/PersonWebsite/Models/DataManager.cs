@@ -28,6 +28,11 @@ namespace PersonWebsite.Models
             return people.ToArray();
         }
 
+        public static Person GetAPerson(int id)
+        {
+            return people[id-1];
+        }
+
 
     }
 }

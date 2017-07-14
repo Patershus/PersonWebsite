@@ -24,6 +24,7 @@ namespace PersonWebsite
         {
             app.UseDeveloperExceptionPage();
             app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
 
 
                 
