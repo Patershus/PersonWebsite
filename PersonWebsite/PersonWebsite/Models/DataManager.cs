@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +23,7 @@ namespace PersonWebsite.Models
             lastId++;
             person.Id = lastId;
             people.Add(person);
+            JsonToFile();
         }
 
         public static Person[] GetAllPeople()
@@ -31,6 +34,26 @@ namespace PersonWebsite.Models
         public static Person GetAPerson(int id)
         {
             return people[id-1];
+        }
+
+        public static void EditPerson(Person person)
+        {
+            var personToChange =people.SingleOrDefault(p => p.Id == person.Id);
+
+            personToChange.Name = person.Name;
+            personToChange.Email = person.Email;
+
+        }
+
+        public static void JsonToFile()
+        {
+            //StreamWriter file = File.CreateText(@"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\wwwroot\people.json");
+                
+            //JsonSerializer serializer = new JsonSerializer();
+            //serializer.Serialize(file,people);
+
+            File.WriteAllText(@"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\wwwroot\people.json", JsonConvert.SerializeObject(people, Formatting.Indented));
+
         }
 
 

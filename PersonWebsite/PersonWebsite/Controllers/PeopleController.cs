@@ -22,22 +22,36 @@ namespace PersonWebsite.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
-            
+        {         
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Person person)
         {
+            if (!ModelState.IsValid)
+                return View(person);
+
             DataManager.AddPerson(person);
-            return Redirect(nameof (Index));
+            return RedirectToAction(nameof (Index));
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
+
             var person = DataManager.GetAPerson(id);
             return View(person);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Person person)
+        {
+            if (!ModelState.IsValid)
+                return View(person);
+
+            DataManager.EditPerson(person);
+            return RedirectToAction(nameof (Index));
         }
     }
 }

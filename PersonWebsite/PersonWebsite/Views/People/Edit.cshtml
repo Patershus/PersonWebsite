@@ -14,9 +14,12 @@
     <form asp-controller="people" asp-action="edit">
         <label asp-for="Name"></label>
         <input asp-for="Name" value="@(Model.Name)" />
+        <span asp-validation-for="Name"></span>
         <br />
         <label asp-for="Email"></label>
         <input asp-for="Email" value="@(Model.Email)" />
+        <span asp-validation-for="Email"></span>
+
         <br />
         <input type="submit" value="Edit" />
     </form>
