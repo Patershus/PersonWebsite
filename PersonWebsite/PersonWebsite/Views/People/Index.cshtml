@@ -1,0 +1,19 @@
+﻿@model PersonWebsite.Models.Person[]
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h1>People!</h1>
+
+    <ul>
+        @foreach (var person in @Model)
+        {
+            <li>@person.Name  @person.Email </li>
+        }
+    </ul>
+</body>
+</html>

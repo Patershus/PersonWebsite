@@ -1,0 +1,27 @@
+﻿@model PersonWebsite.Models.Person
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create a person</title>
+</head>
+<body>
+    <header>
+        <h1>Create a person!</h1>
+    </header>
+        <form asp-controller="people" asp-action="create">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <br />
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <br />
+            <input type="submit" value="Create person" />
+        </form>
+    
+
+
+</body>
+</html>
