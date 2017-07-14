@@ -9,7 +9,7 @@ namespace PersonWebsite.Models
 {
     static public class DataManager
     {
-
+        static string path = @"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\wwwroot\people.json";
         static List<Person> people = new List<Person>
         {
             new Person{Id=1, Name="Petter", Email="Petter@hotmail.com"},
@@ -52,7 +52,17 @@ namespace PersonWebsite.Models
             //JsonSerializer serializer = new JsonSerializer();
             //serializer.Serialize(file,people);
 
-            File.WriteAllText(@"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\wwwroot\people.json", JsonConvert.SerializeObject(people, Formatting.Indented));
+            File.WriteAllText(path, JsonConvert.SerializeObject(people, Formatting.Indented));
+
+        }
+
+        public static List<Person> GetListFromJson()
+        {
+            string textFromJson = File.ReadAllText(path);
+            var peopleList = JsonConvert.DeserializeObject<List<Person>>(textFromJson);
+
+            
+            return peopleList;
 
         }
 
