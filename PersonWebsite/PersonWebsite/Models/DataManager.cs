@@ -28,9 +28,8 @@ namespace PersonWebsite.Models
             tempPerson.Id = lastId;
             people.Add(tempPerson);
             JsonToFile();
-
         }
-
+        
         private static void LoadJson()
         {
             string jsonString = File.ReadAllText(path);
