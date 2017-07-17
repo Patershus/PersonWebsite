@@ -27,7 +27,7 @@ namespace PersonWebsite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Person person)
+        public IActionResult Create(PeopleCreateVM person)
         {
             if (!ModelState.IsValid)
                 return View(person);

@@ -1,4 +1,4 @@
-﻿@model PersonWebsite.Models.Person
+﻿@model PersonWebsite.Models.PeopleCreateVM
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
@@ -14,12 +14,19 @@
 
         <form asp-controller="people" asp-action="create">
             <label asp-for="Name"></label>
+            <br />
             <input asp-for="Name" />
             <span asp-validation-for="Name"></span>
             <br />
             <label asp-for="Email"></label>
+            <br />
             <input asp-for="Email" />
             <span asp-validation-for="Email"></span>
+            <br />
+            <label asp-for="BotCheck"></label>
+            <br />
+            <input asp-for="BotCheck" />
+            <span asp-validation-for="BotCheck"></span>
             <br />
             <input type="submit" value="Create person" />
         </form>

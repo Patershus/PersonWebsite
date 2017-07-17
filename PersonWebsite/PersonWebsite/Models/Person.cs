@@ -19,7 +19,7 @@ namespace PersonWebsite.Models
         [Required]
         [EmailAddress(ErrorMessage ="Invalid email input")]
         [EmailString(ErrorMessage ="Email needs to end with .se or .com")]
-        [StringLength(2)]
+     
         public string Email { get; set; }
 
     }

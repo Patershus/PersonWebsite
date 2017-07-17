@@ -13,22 +13,34 @@ namespace PersonWebsite.Models
         static List<Person> people = new List<Person>
         {
             new Person{Id=1, Name="Petter", Email="Petter@hotmail.com"},
-            new Person{Id=2, Name="Håkan", Email="Håkan@academicwork.com"},
+            new Person{Id=2, Name="Håkan", Email="Hakan@academicwork.com"},
             new Person{Id=3, Name="Pontus", Email="Pontus@warmkitten.com"},
         };
         static int lastId = 3;
 
-        public static void AddPerson(Person person)
+        public static void AddPerson(PeopleCreateVM person)
         {
             lastId++;
-            person.Id = lastId;
-            people.Add(person);
+
+            Person tempPerson = new Person();
+            tempPerson.Name = person.Name;
+            tempPerson.Email = person.Email;
+            tempPerson.Id = lastId;
+            people.Add(tempPerson);
             JsonToFile();
         }
 
-        public static Person[] GetAllPeople()
+        public static PeopleIndexVM[] GetAllPeople()
         {
-            return people.ToArray();
+            return people
+                .Select(c => new PeopleIndexVM
+                {
+                    Name = c.Name,
+                    Email = c.Email,
+                    Id = c.Id,
+                    ShowAsHighlighted = c.Email.EndsWith(".com"),
+                })
+                .ToArray();
         }
 
         public static Person GetAPerson(int id)
@@ -65,7 +77,5 @@ namespace PersonWebsite.Models
             return peopleList;
 
         }
-
-
     }
 }
