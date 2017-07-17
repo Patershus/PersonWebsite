@@ -7,7 +7,7 @@
   {
     "Id": 2,
     "Name": "Håkan",
-    "Email": "Håkan@academicwork.com"
+    "Email": "Hakan@academicwork.com"
   },
   {
     "Id": 3,
@@ -16,7 +16,27 @@
   },
   {
     "Id": 4,
+    "Name": "epr",
+    "Email": "ptr@live.se"
+  },
+  {
+    "Id": 5,
     "Name": "Pater",
     "Email": "ptr@live.se"
+  },
+  {
+    "Id": 6,
+    "Name": "Pater",
+    "Email": "ptr@liveasd.se"
+  },
+  {
+    "Id": 7,
+    "Name": "Björn",
+    "Email": "Bjors@live.se"
+  },
+  {
+    "Id": 8,
+    "Name": "Max",
+    "Email": "Max@gmail.com"
   }
 ]

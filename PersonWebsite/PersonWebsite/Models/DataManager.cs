@@ -9,7 +9,7 @@ namespace PersonWebsite.Models
 {
     static public class DataManager
     {
-        static string path = @"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\wwwroot\people.json";
+        static string path = @"C:\projects\PersonWebsite\PersonWebsite\PersonWebsite\JsonFile\people.json";
         static List<Person> people = new List<Person>
         {
             new Person{Id=1, Name="Petter", Email="Petter@hotmail.com"},
@@ -20,18 +20,29 @@ namespace PersonWebsite.Models
 
         public static void AddPerson(PeopleCreateVM person)
         {
+            LoadJson();
             lastId++;
-
             Person tempPerson = new Person();
             tempPerson.Name = person.Name;
             tempPerson.Email = person.Email;
             tempPerson.Id = lastId;
             people.Add(tempPerson);
             JsonToFile();
+
+        }
+
+        private static void LoadJson()
+        {
+            string jsonString = File.ReadAllText(path);
+            var jsonList = JsonConvert.DeserializeObject<List<Person>>(jsonString);
+            people = jsonList;
+            lastId =people
+                .Max(p => p.Id);
         }
 
         public static PeopleIndexVM[] GetAllPeople()
         {
+            LoadJson();
             return people
                 .Select(c => new PeopleIndexVM
                 {
@@ -45,15 +56,18 @@ namespace PersonWebsite.Models
 
         public static Person GetAPerson(int id)
         {
+            LoadJson();
             return people[id-1];
         }
 
-        public static void EditPerson(Person person)
+        public static void EditPerson(int id, PeopleEditVM person)
         {
-            var personToChange =people.SingleOrDefault(p => p.Id == person.Id);
+            LoadJson();
+            var personToChange =people.SingleOrDefault(p => p.Id == id);
 
             personToChange.Name = person.Name;
             personToChange.Email = person.Email;
+            JsonToFile();
 
         }
 
@@ -68,14 +82,14 @@ namespace PersonWebsite.Models
 
         }
 
-        public static List<Person> GetListFromJson()
-        {
-            string textFromJson = File.ReadAllText(path);
-            var peopleList = JsonConvert.DeserializeObject<List<Person>>(textFromJson);
+        //public static List<Person> GetListFromJson()
+        //{
+        //    string textFromJson = File.ReadAllText(path);
+        //    var peopleList = JsonConvert.DeserializeObject<List<Person>>(textFromJson);
 
             
-            return peopleList;
+        //    return peopleList;
 
-        }
+        //}
     }
 }

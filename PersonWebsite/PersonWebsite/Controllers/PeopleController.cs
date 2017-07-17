@@ -45,12 +45,12 @@ namespace PersonWebsite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Person person)
+        public IActionResult Edit(int id, PeopleEditVM person)
         {
             if (!ModelState.IsValid)
                 return View(person);
 
-            DataManager.EditPerson(person);
+            DataManager.EditPerson(id,person);
             return RedirectToAction(nameof (Index));
         }
     }

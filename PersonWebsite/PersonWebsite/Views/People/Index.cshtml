@@ -16,12 +16,17 @@
         {
             <tr>
                 <td>@person.Name  @person.Email </td>
-                <td><a asp-controller="people" asp-action="edit" asp-route-id="@(person.Id)">Edit</a></td>
-                @if (person.ShowAsHighlighted)
+                
+                @if (@person.ShowAsHighlighted)
                 {
-    
-                    <td style="color:green">Denna är grön</td>
+                    <td style = "color:green" > @person.Email </td >
+                }                
+                else
+                {
+                <td>@person.Email </td>
                 }
+
+                <td><a asp-controller="people" asp-action="edit" asp-route-id="@(person.Id)">Edit</a></td>	
             </tr>
         }
     </table>

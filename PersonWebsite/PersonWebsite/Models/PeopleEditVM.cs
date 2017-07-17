@@ -17,7 +17,7 @@ namespace PersonWebsite.Models
         [EmailString(ErrorMessage = "Email needs to end with .se or .com")]
         [Display(Name = "E-Mail")]
         public string Email { get; set; }
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
     }
 }
